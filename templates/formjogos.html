@@ -13,14 +13,14 @@
             <div class="linha">
                 <label for="nome">
                     Nome:
-                    <input type="text" name="nome" value="{{jogo['nome_jogo']}}" maxlength="30" required>
+                    <input type="text" name="nome" value="{{jogo['nome_jogo']}}" maxlength="60" required>
                 </label>
             </div>
 
             <div class="linha">
                 <label for="desc">
                     Descrição
-                    <input type="textbox" name="desc" value="{{jogo['descricao']}}" maxlength="30" required>
+                    <input type="textbox" name="desc" value="{{jogo['descricao']}}" maxlength="255" required>
                 </label>
             </div>
 
@@ -40,14 +40,14 @@
             <div class="linha">
                 <label for="preco">
                     Preço:
-                    <input type="number" name="preco" value="{{jogo['precoR$']}}" max="1000" required>
+                    <input type="number" name="preco" value="{{jogo['precoR$']}}" min="0" max="1000" required>
                 </label>
             </div>
 
             <div class="linha">
                 <label for="quant_player">
                     Quant. de Jogadores:
-                    <input type="number" name="quant_player" value="{{jogo['quantidade_players']}}" maxlength="100" required>
+                    <input type="number" name="quant_player" value="{{jogo['quantidade_players']}}" min="1" maxlength="100" required>
                 </label>
             </div>
             <div class="linha">

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Jogos</title>
+</head>
+<body>
+    <h2>{{title}}</h2>
+    <p><a href="/">Retornar ao Índice</a></p>
+    <div class="container">
+        <form method="post", class="formentry">
+            <div class="linha">
+                <label for="nome">
+                    Nome:
+                    <input type="text" name="nome" value="{{jogo['nome_jogo']}}" maxlength="30" required>
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="desc">
+                    Descrição
+                    <input type="textbox" name="desc" value="{{jogo['descricao']}}" maxlength="30" required>
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="D_L">
+                    Data de Lançamento:
+                    <input type="text" name="D_L" value="{{jogo['data_lancamento']}}" maxlength="30" required>
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="C_E">
+                    Classificação Indicativa
+                    <input type="text" name="C_E" value="{{jogo['classificacao_etaria']}}" maxlength="30" required>
+                </label>
+            </div>
+            <div class="linha">
+                <label for="preco">
+                    Preço:
+                    <input type="number" name="preco" value="{{jogo['precoR$']}}" max="1000" required>
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="quant_player">
+                    Quant. de Jogadores:
+                    <input type="number" name="quant_player" value="{{jogo['quantidade_players']}}" maxlength="100" required>
+                </label>
+            </div>
+            <div class="linha">
+                <label for="dev">
+                    Desenvolvedor:
+                    {% if devs.__len__() == 0 %}
+                    Não há <a href="/devs">Desenvolvedores</a> Registrados!
+                    {% else %}
+                    <select name="dev" id="dev" required>
+                        {% for dev in devs %}
+                        <option value="{{dev['id']}}">{{dev['nome_dev']}}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                </label>
+            </div>
+
+            <div class="linha">
+                <label for="plat">
+                    Plataformas:
+                    {% if plataformas.__len__() == 0 %}
+                    Não há <a href="/plataformas">Plataformas</a> Registrados!
+                    {% else %}
+                    <select name="plat" id="plat" required>
+                        {% for plat in plataformas %}
+                        <option value="{{plat['id']}}">{{plat['nome_plata']}}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                </label>
+            </div>
+            <div class="linha">
+                <label for="gen">
+                    Gênero:
+                    {% if generos.__len__() == 0 %}
+                    Não há <a href="/generos">Gêneros</a> Registrados!
+                    {% else %}
+                    <select name="gen" id="gen" required>
+                        {% for gen in generos %}
+                        <option value="{{gen['id']}}">{{gen['nome_gen']}}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                </label>
+            </div>
+            <div>
+                {% if devs.__len__() == 0 or plataformas.__len__() == 0 or generos.__len__() == 0 %}
+                <p>Registre as outras Entidades Obrigátorias antes registrar um jogo</p>
+                {% else %}
+                <button type="submit">Enviar</button>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos</title>
+</head>
+<body>
+    <div>
+        <a href="/">Retornar ao Índice</a>
+        {% if jogos.__len__() == 0 %}
+        <h2>Não há Jogos Registrados!</h2>
+        {% endif %}
+        <div>
+            <table border='1'>
+                <h2>Tabela Jogos</h2>
+                <thead>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Data de Lançamento</th>
+                    <th>Classificação Indicativa</th>
+                    <th>Preço (R$)</th>
+                    <th>Quant. de Jogadores</th>
+                </thead>
+                <tbody>
+                    {% for jogo in jogos %}
+                    <tr>
+                        <td>{{jogo['id']}}</td>
+                        <td>{{jogo['nome_jogo']}}</td>
+                        <td>{{jogo['descricao']}}</td>
+                        <td>{{jogo['data_lancamento']}}</td>
+                        <td>{{jogo['classificacao_etaria']}}</td>
+                        <td>R${{jogo['precoR$']}}</td>
+                        <td>{{jogo['quantidade_players']}}</td>
+                        <td><a href="jogos/editar/{{jogo['id']}}">Editar</a></td>
+                        <td><a href="jogos/remover/{{jogo['id']}}">Apagar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="jogos/novo">Adicionar novo Registro</a>
+        </div>
+        <h2>Tabelas de Relação:</h2>
+        <div>
+            <table border="1">
+                <h3>Jogos - Desenvolvedores</h3>
+                <thead>
+                    <th>Nome</th>
+                    <th>Data de Lançamento</th>
+                    <th>Preço(R$)</th>
+                    <th>Quant. de Jogadores</th>
+                    <th>Desenvolvedor</th>
+                </thead>
+                <tbody>
+                    {% for rel in Jdevs %}
+                    <tr>
+                        <td>{{rel['nome_jogo']}}</td>
+                        <td>{{rel['D_lancamento']}}</td>
+                        <td>{{rel['precoR$']}}</td>
+                        <td>{{rel['quantidade_players']}}</td>
+                        <td>{{rel['nome_dev']}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <table border="1">
+                <h3>Jogos - Plataformas</h3>
+                <thead>
+                    <th>Nome</th>
+                    <th>Data de Lançamento</th>
+                    <th>Preço(R$)</th>
+                    <th>Quant. de Jogadores</th>
+                    <th>Plataforma</th>
+                </thead>
+                <tbody>
+                    {% for rel in Jplats %}
+                    <tr>
+                        <td>{{rel['nome_jogo']}}</td>
+                        <td>{{rel['D_lancamento']}}</td>
+                        <td>{{rel['precoR$']}}</td>
+                        <td>{{rel['quantidade_players']}}</td>
+                        <td>{{rel['nome_plata']}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <table border="1">
+                <h3>Jogos - Gêneros</h3>
+                <thead>
+                    <th>Nome</th>
+                    <th>Data de Lançamento</th>
+                    <th>Preço(R$)</th>
+                    <th>Quant. de Jogadores</th>
+                    <th>Gênero</th>
+                </thead>
+                <tbody>
+                    {% for rel in Jgens %}
+                    <tr>
+                        <td>{{rel['nome_jogo']}}</td>
+                        <td>{{rel['D_lancamento']}}</td>
+                        <td>{{rel['precoR$']}}</td>
+                        <td>{{rel['quantidade_players']}}</td>
+                        <td>{{rel['nome_gen']}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

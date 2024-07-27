@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataformas</title>
+</head>
+<body>
+    <div>
+        <a href="/">Retornar ao Índice</a>
+        {% if plataformas.__len__() == 0 %}
+        <h2>Não há Plataformas Registradas!</h2>
+        {% endif %}
+        <table border='1'>
+            <thead>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Fabricante</th>
+            </thead>
+            <tbody>
+                {% for plata in plataformas %}
+                <tr>
+                    <td>{{plata['id']}}</td>
+                    <td>{{plata['nome_plata']}}</td>
+                    <td>{{plata['fabricante']}}</td>
+                    <td><a href="plataformas/editar/{{plata['id']}}">Editar</a></td>
+                    <td><a href="plataformas/remover/{{plata['id']}}">Apagar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="plataformas/novo">Adicionar novo Registro</a>
+    </div>
+</body>
+</html>
